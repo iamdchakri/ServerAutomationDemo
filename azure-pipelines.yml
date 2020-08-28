@@ -32,7 +32,7 @@ steps:
       script: New-AzResourceGroup -Name $(azure_resource_group_name) -Location eastus -Force
   - task: Pester@0
     inputs:
-      scriptFolder: "@{Path='$(System.DefaultWorkingDirectory)/server.template.tests.ps1'; Parameters=@{ResourceGroupName='$(azure_resource_group_name)'}}"
+      scriptFolder: "@{Path='$(System.DefaultWorkingDirectory)/server.template.tests.ps1'; Parameters=@{ArmDeploymentJsonOutput='$(arm_output)'}}"
       resultsFile: "$(System.DefaultWorkingDirectory)/server.template.tests.XML"
       usePSCore: true
       run32Bit: False
